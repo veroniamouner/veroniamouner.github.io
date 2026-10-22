@@ -57,26 +57,11 @@ const CASES = [
 /* To show a screenshot instead of the live preview, save it as assets/web/<slug>.jpg */
 const SITES = [
   {
-    slug: "egystone",
-    name: "Egy Stone",
-    url: "https://egystone.com",
-    brand: "#3f8f4a",
-    cat: { en: "Corporate website · Redesign", ar: "موقع شركة · إعادة تصميم" },
-    text: {
-      en: "The website of a Corian and Compact HPL supplier. I manage and customize it on WordPress & Elementor.",
-      ar: "موقع شركة توريد كوريان وكومباكت. بديره وبطوّره على ووردبريس وإليمنتور.",
-    },
-    points: {
-      en: ["Improved visual structure, content presentation and usability", "New sections, image areas and content blocks", "Stock availability and color-swatch pages"],
-      ar: ["تحسين البنية البصرية وعرض المحتوى وسهولة الاستخدام", "أقسام جديدة ومساحات صور وبلوكات محتوى", "صفحات المخزون المتاح وعينات الألوان"],
-    },
-    stack: ["WordPress", "Elementor", "CSS"],
-  },
-  {
     slug: "catalog-now",
     name: "Catalog Now",
     url: "https://catalog-now.com",
     brand: "#588157",
+    logo: "https://catalog-now.com/wp-content/uploads/2026/10/Untitled-1-02.png",
     cat: { en: "New brand · Full website", ar: "علامة جديدة · موقع كامل" },
     text: {
       en: "A live stock catalogue for a newly launched brand — designed from the first concept to the final layout.",
@@ -103,6 +88,22 @@ const SITES = [
       ar: ["تصميم أبيض بسيط بلمسات كحلي", "أقسام مخصصة بـ HTML/CSS جوه إليمنتور", "متجاوب مع الموبايل والكمبيوتر"],
     },
     stack: ["WordPress", "Elementor", "HTML", "CSS"],
+  },
+  {
+    slug: "egystone",
+    name: "Egy Stone",
+    url: "https://egystone.com",
+    brand: "#3f8f4a",
+    cat: { en: "Corporate website · Redesign", ar: "موقع شركة · إعادة تصميم" },
+    text: {
+      en: "The website of a Corian and Compact HPL supplier. I manage and customize it on WordPress & Elementor.",
+      ar: "موقع شركة توريد كوريان وكومباكت. بديره وبطوّره على ووردبريس وإليمنتور.",
+    },
+    points: {
+      en: ["Improved visual structure, content presentation and usability", "New sections, image areas and content blocks", "Stock availability and color-swatch pages"],
+      ar: ["تحسين البنية البصرية وعرض المحتوى وسهولة الاستخدام", "أقسام جديدة ومساحات صور وبلوكات محتوى", "صفحات المخزون المتاح وعينات الألوان"],
+    },
+    stack: ["WordPress", "Elementor", "CSS"],
   },
 ];
 
@@ -216,8 +217,8 @@ function renderSites() {
     <article class="web-card reveal" style="--brand:${s.brand}">
       <div class="browser">
         <div class="browser-bar"><i></i><i></i><i></i><span class="url">${s.url.replace("https://", "")}</span></div>
-        <a class="screen" href="${s.url}" target="_blank" rel="noopener" data-slug="${s.slug}" data-url="${s.url}" aria-label="${s.name}">
-          <div class="ph">${s.name}</div>
+        <a class="screen" href="${s.url}" target="_blank" rel="noopener" data-slug="${s.slug}" data-url="${s.url}" data-cover="${s.cover ? 1 : ""}" aria-label="${s.name}">
+          <div class="ph">${s.logo ? `<img class="ph-logo" src="${s.logo}" alt="${s.name} logo" onerror="this.remove()">` : ""}<span>${s.name}</span></div>
         </a>
       </div>
       <div class="web-info">
@@ -238,6 +239,7 @@ function loadScreen(screen) {
   img.alt = screen.getAttribute("aria-label") + " website";
   img.onload = () => { screen.querySelector(".ph")?.remove(); screen.prepend(img); };
   img.onerror = () => {
+    if (screen.dataset.cover) return; // keep the branded cover instead of a live preview
     const io = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting) return;
       io.disconnect();

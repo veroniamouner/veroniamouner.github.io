@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Veronia Mouner — Graphic & Web Designer</title>
+  <meta name="description" content="Portfolio of Veronia Mouner, graphic designer in Cairo — social media, branding, print and WordPress / Elementor websites.">
+  <meta property="og:title" content="Veronia Mouner — Graphic & Web Designer">
+  <meta property="og:description" content="Social media, branding, print and website design.">
+  <meta property="og:image" content="assets/work/oura-1.jpg">
+  <meta name="theme-color" content="#0d0b12">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%239b6bff'/><text x='50%' y='56%' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='30' fill='white'>VM</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Inter:wght@400;500;600&family=Alexandria:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav" id="top">
+  <a href="#top" class="logo" aria-label="Home">VM<span>.</span></a>
+  <nav class="nav-links" id="navLinks">
+    <a href="#work" data-i18n="nav.work">Work</a>
+    <a href="#web" data-i18n="nav.web">Websites</a>
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="lang" id="langBtn" aria-label="Switch language">عربي</button>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text reveal">
+      <p class="eyebrow"><span class="dot"></span><span data-i18n="hero.status">Available for freelance & full-time</span></p>
+      <h1>
+        <span data-i18n="hero.hi">Hi, I'm</span>
+        <span class="name" data-i18n="hero.name">Veronia Mouner</span>
+      </h1>
+      <p class="role" data-i18n="hero.role">Graphic Designer · Social Media · Web Design</p>
+      <p class="lead" data-i18n="hero.lead">I design visuals that work — from scroll-stopping social posts and brand identities to print and WordPress websites.</p>
+      <div class="cta">
+        <a href="#work" class="btn primary" data-i18n="hero.cta1">See my work</a>
+        <a href="assets/cv/Veronia-Mouner-CV.pdf" class="btn ghost" download data-i18n="hero.cta2">Download CV</a>
+      </div>
+    </div>
+    <div class="hero-art reveal" aria-hidden="true">
+      <div class="tile t1"><img src="assets/work/oura-1.jpg" alt=""></div>
+      <div class="tile t2"><img src="assets/work/social-03.jpg" alt=""></div>
+      <div class="tile t3"><img src="assets/work/coffee-3.jpg" alt=""></div>
+      <div class="tile t4"><img src="assets/work/ads-6.jpg" alt=""></div>
+    </div>
+  </section>
+
+  <section class="stats reveal">
+    <div><strong>2+</strong><span data-i18n="stats.years">Years of experience</span></div>
+    <div><strong>40+</strong><span data-i18n="stats.designs">Designs in this portfolio</span></div>
+    <div><strong>3</strong><span data-i18n="stats.brands">Brand identities</span></div>
+    <div><strong>3</strong><span data-i18n="stats.sites">Websites built & managed</span></div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="section">
+    <div class="section-head reveal">
+      <p class="kicker">01</p>
+      <h2 data-i18n="work.title">Selected Work</h2>
+      <p class="sub" data-i18n="work.sub">Social media campaigns and outdoor ads. Click any image to view it full size.</p>
+    </div>
+
+    <div class="filters reveal" role="tablist">
+      <button class="chip active" data-filter="all" data-i18n="f.all">All</button>
+      <button class="chip" data-filter="social" data-i18n="f.social">Social Media</button>
+      <button class="chip" data-filter="ads" data-i18n="f.ads">Visual Ads</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- BRAND CASES -->
+  <section class="section cases" id="branding">
+    <div class="section-head reveal">
+      <p class="kicker">02</p>
+      <h2 data-i18n="cases.title">Brand Identities</h2>
+      <p class="sub" data-i18n="cases.sub">Logo design and how each brand lives on packaging, merch and spaces.</p>
+    </div>
+    <div id="cases"></div>
+  </section>
+
+  <!-- WEB -->
+  <section id="web" class="section">
+    <div class="section-head reveal">
+      <p class="kicker">03</p>
+      <h2 data-i18n="web.title">Websites</h2>
+      <p class="sub" data-i18n="web.sub">WordPress & Elementor sites I designed, built or customized — with custom HTML, CSS and JavaScript where the builder isn't enough.</p>
+    </div>
+    <div class="web-list" id="webList"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about">
+    <div class="section-head reveal">
+      <p class="kicker">04</p>
+      <h2 data-i18n="about.title">About & Experience</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p data-i18n="about.p1">I'm a graphic designer with 2 years of professional experience across digital design, branding, social media, print production and website design.</p>
+        <p data-i18n="about.p2">I currently manage the visual identity of two brands in different sectors — from daily social content to marketing materials and their websites. Before that, I worked in a print house, which taught me color, layout and file preparation the hard way.</p>
+        <div class="skills">
+          <h3 data-i18n="about.tools">Tools & skills</h3>
+          <ul class="tags">
+            <li><b class="ai">Ai</b> Illustrator</li>
+            <li><b class="ps">Ps</b> Photoshop</li>
+            <li><b class="wp">W</b> WordPress</li>
+            <li><b class="el">E</b> Elementor</li>
+            <li><b class="code">&lt;/&gt;</b> HTML · CSS · JS</li>
+          </ul>
+          <ul class="tags soft">
+            <li data-i18n="sk.1">Branding</li>
+            <li data-i18n="sk.2">Social Media Design</li>
+            <li data-i18n="sk.3">Print & Pre-press</li>
+            <li data-i18n="sk.4">Responsive Web Design</li>
+            <li data-i18n="sk.5">Marketing Materials</li>
+          </ul>
+        </div>
+      </div>
+
+      <ol class="timeline reveal">
+        <li>
+          <span class="when" data-i18n="exp.1.when">2025 — Present</span>
+          <h3 data-i18n="exp.1.title">Graphic Designer · Egy Stone & Porta</h3>
+          <ul>
+            <li data-i18n="exp.1.a">Lead the visual communication of two brands in different business sectors.</li>
+            <li data-i18n="exp.1.b">Create social media content for Facebook, Instagram and other platforms.</li>
+            <li data-i18n="exp.1.c">Design marketing materials, product presentations and corporate assets.</li>
+            <li data-i18n="exp.1.d">Manage and customize the company websites on WordPress & Elementor, and lead the design of a new brand's website.</li>
+          </ul>
+        </li>
+        <li>
+          <span class="when" data-i18n="exp.2.when">2024 — 2025</span>
+          <h3 data-i18n="exp.2.title">Graphic Designer & Pre-press Specialist · Kastour Print</h3>
+          <ul>
+            <li data-i18n="exp.2.a">Designed commercial and corporate print: business cards, notebooks, books and banners.</li>
+            <li data-i18n="exp.2.b">Created logos and brand identity materials for small and medium businesses.</li>
+            <li data-i18n="exp.2.c">Prepared files for production, with hands-on experience in color and print requirements.</li>
+          </ul>
+        </li>
+        <li>
+          <span class="when">2020 — 2024</span>
+          <h3 data-i18n="edu.title">B.A. Economics & International Trade · ECU</h3>
+          <ul><li data-i18n="edu.a">The Egyptian Chinese University — major in Marketing.</li></ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact reveal">
+    <p class="kicker">05</p>
+    <h2 class="big" data-i18n="contact.title">Let's work together</h2>
+    <p class="sub" data-i18n="contact.sub">Have a brand, a campaign or a website in mind? Send me a message.</p>
+    <a class="mail" href="mailto:veroniamouner9@gmail.com">veroniamouner9@gmail.com</a>
+    <div class="socials">
+      <a href="https://www.behance.net/veroniamouner" target="_blank" rel="noopener">Behance ↗</a>
+      <a href="https://wa.me/201212239494" target="_blank" rel="noopener">WhatsApp ↗</a>
+      <a href="assets/cv/Veronia-Mouner-CV.pdf" download data-i18n="contact.cv">CV (PDF) ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>© <span id="year"></span> Veronia Mouner</span>
+  <span data-i18n="footer.loc">Cairo, Egypt</span>
+  <a href="#top" data-i18n="footer.top">Back to top ↑</a>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+  <button class="lb-nav prev" id="lbPrev" aria-label="Previous">‹</button>
+  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <button class="lb-nav next" id="lbNext" aria-label="Next">›</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

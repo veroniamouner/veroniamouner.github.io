@@ -1,15 +1,15 @@
 /* ===== Veronia Mouner — Portfolio ===== */
 
 /* ---------- Content (edit here to add or change work) ---------- */
+/* The first 9 (FEATURED) show on load; the rest appear with "Show all work". */
+const FEATURED = ["social-03", "social-11", "ads-4", "social-14", "social-20", "social-04", "ads-1", "social-01", "social-13"];
+const ALL_WORK = [
+  ...Array.from({ length: 21 }, (_, i) => ({ id: `social-${String(i + 1).padStart(2, "0")}`, cat: "social" })),
+  ...Array.from({ length: 6 }, (_, i) => ({ id: `ads-${i + 1}`, cat: "ads" })),
+].map((w) => ({ ...w, src: `assets/work/${w.id}.jpg`, featured: FEATURED.includes(w.id) }));
 const WORK = [
-  ...Array.from({ length: 21 }, (_, i) => ({
-    src: `assets/work/social-${String(i + 1).padStart(2, "0")}.jpg`,
-    cat: "social",
-  })),
-  ...Array.from({ length: 6 }, (_, i) => ({
-    src: `assets/work/ads-${i + 1}.jpg`,
-    cat: "ads",
-  })),
+  ...FEATURED.map((id) => ALL_WORK.find((w) => w.id === id)),
+  ...ALL_WORK.filter((w) => !w.featured),
 ];
 
 const CASES = [
@@ -109,13 +109,14 @@ const SITES = [
 
 /* ---------- Translations ---------- */
 const AR = {
-  "nav.work": "أعمالي", "nav.web": "المواقع", "nav.about": "عني", "nav.contact": "تواصل",
+  "nav.work": "أعمالي", "nav.branding": "الهويات", "nav.web": "المواقع", "nav.about": "عني", "nav.contact": "تواصل",
   "hero.status": "متاحة للعمل الحر والدوام الكامل",
   "hero.hi": "أهلًا، أنا",
   "hero.name": "فيرونيا منير",
   "hero.role": "مصممة جرافيك · سوشيال ميديا · تصميم مواقع",
-  "hero.lead": "بصمم تصميمات بتشتغل فعلًا — من بوستات السوشيال ميديا والهويات البصرية، للمطبوعات ومواقع الووردبريس.",
-  "hero.cta1": "شوف أعمالي", "hero.cta2": "تحميل السي في",
+  "hero.lead": "بصمم تصميمات بتشتغل فعلًا — من بوستات السوشيال ميديا، للهويات البصرية ومواقع الووردبريس.",
+  "hero.cta1": "شوف أعمالي", "hero.cta2": "تحميل السي في", "hero.cta3": "تواصل معي",
+  "work.more": "عرض كل الأعمال", "work.less": "عرض أقل",
   "stats.years": "سنين خبرة", "stats.designs": "تصميم نفّذته", "stats.brands": "هويات بصرية", "stats.sites": "مواقع صممتها وبديرها",
   "work.title": "أعمال مختارة", "work.sub": "حملات سوشيال ميديا وإعلانات خارجية. اضغط على أي صورة عشان تشوفها بحجم كامل.",
   "f.all": "الكل", "f.social": "سوشيال ميديا", "f.ads": "إعلانات خارجية",
@@ -123,9 +124,9 @@ const AR = {
   "web.title": "المواقع", "web.sub": "مواقع ووردبريس وإليمنتور صممتها أو بنيتها أو طوّرتها — مع HTML وCSS وJavaScript لما البيلدر ما يكفيش.",
   "about.title": "عني وخبراتي",
   "about.p1": "مصممة جرافيك بخبرة سنتين في التصميم الرقمي، الهوية البصرية، السوشيال ميديا، المطبوعات وتصميم المواقع.",
-  "about.p2": "حاليًا بدير الهوية البصرية لعلامتين في مجالين مختلفين — من محتوى السوشيال اليومي للمواد التسويقية والمواقع. وقبلها اشتغلت في مطبعة، واتعلمت هناك الألوان والتنسيق وتجهيز الملفات للطباعة عمليًا.",
+  "about.p2": "حاليًا بدير الهوية البصرية لعلامتين في مجالين مختلفين — من محتوى السوشيال اليومي للمواد التسويقية والمواقع.",
   "about.tools": "الأدوات والمهارات",
-  "sk.1": "هوية بصرية", "sk.2": "تصميم سوشيال ميديا", "sk.3": "طباعة وتجهيز ملفات", "sk.4": "تصميم مواقع متجاوبة", "sk.5": "مواد تسويقية",
+  "sk.1": "هوية بصرية", "sk.2": "تصميم سوشيال ميديا", "sk.4": "تصميم مواقع متجاوبة", "sk.5": "مواد تسويقية",
   "exp.1.when": "2025 — حتى الآن",
   "exp.1.title": "مصممة جرافيك · Egy Stone & Porta",
   "exp.1.a": "مسؤولة عن التواصل البصري لعلامتين في مجالين مختلفين.",
@@ -145,7 +146,7 @@ const AR = {
   "tag.social": "سوشيال ميديا", "tag.ads": "إعلان خارجي · Porta",
   "visit": "زيارة الموقع ↗",
 };
-const EN_TAGS = { "tag.social": "Social Media", "tag.ads": "Outdoor ad · Porta", "visit": "Visit live site ↗" };
+const EN_TAGS = { "work.more": "Show all work", "work.less": "Show less", "tag.social": "Social Media", "tag.ads": "Outdoor ad · Porta", "visit": "Visit live site ↗" };
 
 let lang = "en";
 const saved = (() => { try { return localStorage.getItem("lang"); } catch { return null; } })();
@@ -163,6 +164,7 @@ function applyLang() {
   });
   renderCases();
   renderSites();
+  if (typeof applyGridView === "function" && grid.children.length) applyGridView();
   document.querySelectorAll(".item .tag").forEach((el) => (el.textContent = t(el.dataset.k)));
   observeReveals();
 }
@@ -171,9 +173,13 @@ function applyLang() {
 const grid = document.getElementById("grid");
 let lbList = []; let lbIndex = 0;
 
+let showAll = false;
+let filter = "all";
+const moreBtn = document.getElementById("moreBtn");
+
 function renderGrid() {
   grid.innerHTML = WORK.map((w, i) => `
-    <figure class="item" data-cat="${w.cat}" data-i="${i}">
+    <figure class="item" data-cat="${w.cat}" data-featured="${w.featured ? 1 : ""}" data-i="${i}">
       <img src="${w.src}" alt="${w.cat === "ads" ? "Outdoor advertising design" : "Social media design"}" loading="lazy" width="900" height="880">
       <span class="tag" data-k="tag.${w.cat}">${t("tag." + w.cat)}</span>
     </figure>`).join("");
@@ -181,12 +187,31 @@ function renderGrid() {
     const visible = [...grid.querySelectorAll(".item:not(.hide)")];
     openLightbox(visible.map((v) => ({ src: v.querySelector("img").src, cap: v.querySelector(".tag").textContent })), visible.indexOf(el));
   }));
+  applyGridView();
 }
+
+/* "All" + collapsed = featured only; a category filter always shows that whole category */
+function applyGridView() {
+  grid.querySelectorAll(".item").forEach((it) => {
+    const inCat = filter === "all" || it.dataset.cat === filter;
+    const collapsedOut = filter === "all" && !showAll && !it.dataset.featured;
+    it.classList.toggle("hide", !inCat || collapsedOut);
+  });
+  moreBtn.parentElement.hidden = filter !== "all";
+  moreBtn.textContent = t(showAll ? "work.less" : "work.more");
+  observeReveals();
+}
+
+moreBtn.addEventListener("click", () => {
+  showAll = !showAll;
+  applyGridView();
+  if (!showAll) document.getElementById("work").scrollIntoView({ behavior: "smooth" });
+});
 
 document.querySelectorAll(".chip").forEach((chip) => chip.addEventListener("click", () => {
   document.querySelectorAll(".chip").forEach((c) => c.classList.toggle("active", c === chip));
-  const f = chip.dataset.filter;
-  grid.querySelectorAll(".item").forEach((it) => it.classList.toggle("hide", f !== "all" && it.dataset.cat !== f));
+  filter = chip.dataset.filter;
+  applyGridView();
 }));
 
 /* ---------- Brand cases ---------- */

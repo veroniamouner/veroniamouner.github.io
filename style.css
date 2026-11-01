@@ -49,7 +49,6 @@ body::before {
 }
 .nav.scrolled { border-color: var(--line); }
 .logo { font-family: "Syne", sans-serif; font-weight: 800; font-size: 1.5rem; letter-spacing: -.02em; }
-.logo span { color: var(--accent); }
 .nav-links { display: flex; gap: 28px; font-size: .95rem; color: var(--muted); }
 .nav-links a { position: relative; transition: color .2s; }
 .nav-links a:hover { color: var(--text); }
@@ -302,3 +301,19 @@ h2.big { font-size: clamp(2.6rem, 8vw, 6rem); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal, .item { opacity: 1; transform: none; }
 }
+
+/* branded cover for site cards without a screenshot */
+.screen .ph { flex-direction: column; gap: 14px; display: flex; align-items: center; justify-content: center; }
+.screen .ph-logo { width: auto; height: auto; max-width: 46%; max-height: 46%; object-fit: contain; background: #fff; border-radius: 16px; padding: 14px 20px; box-shadow: 0 20px 40px -18px rgba(0,0,0,.6); }
+
+/* ===== Logo, WhatsApp button, show-all ===== */
+.logo { display: inline-flex; align-items: center; gap: 12px; }
+.logo img { width: 36px; height: auto; }
+.logo-name { font-family: "Syne", sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: -.01em; }
+.btn { display: inline-flex; align-items: center; gap: 8px; }
+.btn.wa { background: #25d366; color: #0b2a17; }
+.btn.wa:hover { background: #3be07a; }
+.more-wrap { display: flex; justify-content: center; margin-top: 12px; }
+.more-wrap[hidden] { display: none; }
+.btn.more { padding: 14px 34px; }
+@media (max-width: 720px) { .logo-name { display: none; } }

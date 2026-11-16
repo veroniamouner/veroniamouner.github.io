@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Inter:wght@400;500;600&family=Alexandria:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -23,6 +23,7 @@
   <nav class="nav-links" id="navLinks">
     <a href="#work" data-i18n="nav.work">Work</a>
     <a href="#branding" data-i18n="nav.branding">Branding</a>
+    <a href="#videos" data-i18n="nav.videos">AI Videos</a>
     <a href="#web" data-i18n="nav.web">Websites</a>
     <a href="#about" data-i18n="nav.about">About</a>
     <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -81,6 +82,10 @@
 
     <div class="grid" id="grid"></div>
     <div class="more-wrap"><button class="btn ghost more" id="moreBtn">Show all work</button></div>
+    <div class="fb-note reveal">
+      <p data-i18n="fb.note">All designs and videos on Egy Stone's Facebook page are my work.</p>
+      <a class="btn ghost" href="https://www.facebook.com/Egystone4" target="_blank" rel="noopener" data-i18n="fb.btn">See the page on Facebook ↗</a>
+    </div>
   </section>
 
   <!-- BRAND CASES -->
@@ -93,10 +98,20 @@
     <div id="cases"></div>
   </section>
 
+  <!-- AI VIDEOS -->
+  <section id="videos" class="section">
+    <div class="section-head reveal">
+      <p class="kicker">03</p>
+      <h2 data-i18n="videos.title">AI Videos</h2>
+      <p class="sub" data-i18n="videos.sub">Promotional videos for Egy Stone made with AI tools — from the idea and the scenes to the final edit.</p>
+    </div>
+    <div class="video-grid" id="videoGrid"></div>
+  </section>
+
   <!-- WEB -->
   <section id="web" class="section">
     <div class="section-head reveal">
-      <p class="kicker">03</p>
+      <p class="kicker">04</p>
       <h2 data-i18n="web.title">Websites</h2>
       <p class="sub" data-i18n="web.sub">WordPress & Elementor sites I designed, built or customized — with custom HTML, CSS and JavaScript where the builder isn't enough.</p>
     </div>
@@ -106,12 +121,13 @@
   <!-- ABOUT -->
   <section id="about" class="section about">
     <div class="section-head reveal">
-      <p class="kicker">04</p>
+      <p class="kicker">05</p>
       <h2 data-i18n="about.title">About & Experience</h2>
     </div>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p data-i18n="about.p1">I'm a graphic designer with 2 years of professional experience across digital design, branding, social media, print production and website design.</p>
+        <img class="portrait" src="assets/about/veronia.jpg" alt="Veronia Mouner" width="765" height="800" loading="lazy">
+        <p data-i18n="about.p1">I'm a graphic designer with 2 years of professional experience across digital design, branding, social media, AI video and website design.</p>
         <p data-i18n="about.p2">I currently manage the visual identity of two brands in different sectors — from daily social content to marketing materials and their websites.</p>
         <div class="skills">
           <h3 data-i18n="about.tools">Tools & skills</h3>
@@ -127,6 +143,7 @@
             <li data-i18n="sk.2">Social Media Design</li>
             <li data-i18n="sk.4">Responsive Web Design</li>
             <li data-i18n="sk.5">Marketing Materials</li>
+            <li data-i18n="sk.6">AI Video</li>
           </ul>
         </div>
       </div>
@@ -162,7 +179,7 @@
 
   <!-- CONTACT -->
   <section id="contact" class="section contact reveal">
-    <p class="kicker">05</p>
+    <p class="kicker">06</p>
     <h2 class="big" data-i18n="contact.title">Let's work together</h2>
     <p class="sub" data-i18n="contact.sub">Have a brand, a campaign or a website in mind? Send me a message.</p>
     <a class="mail" href="mailto:veroniamouner9@gmail.com">veroniamouner9@gmail.com</a>
@@ -188,6 +205,6 @@
   <button class="lb-nav next" id="lbNext" aria-label="Next">›</button>
 </div>
 
-<script src="script.js?v=4"></script>
+<script src="script.js?v=5"></script>
 </body>
 </html>

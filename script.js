@@ -2,11 +2,12 @@
 
 /* ---------- Content (edit here to add or change work) ---------- */
 /* The first 9 (FEATURED) show on load; the rest appear with "Show all work". */
-const FEATURED = ["social-03", "social-11", "ads-4", "social-14", "social-20", "social-04", "ads-1", "social-01", "social-13"];
+const FEATURED = ["social-03", "egystone-02", "ads-4", "social-11", "egystone-09", "social-14", "ads-1", "egystone-03", "social-20"];
 const ALL_WORK = [
   ...Array.from({ length: 21 }, (_, i) => ({ id: `social-${String(i + 1).padStart(2, "0")}`, cat: "social" })),
+  ...Array.from({ length: 9 }, (_, i) => ({ id: `egystone-${String(i + 1).padStart(2, "0")}`, cat: "social", tag: "egystone" })),
   ...Array.from({ length: 6 }, (_, i) => ({ id: `ads-${i + 1}`, cat: "ads" })),
-].map((w) => ({ ...w, src: `assets/work/${w.id}.jpg`, featured: FEATURED.includes(w.id) }));
+].map((w) => ({ ...w, tag: w.tag || w.cat, src: `assets/work/${w.id}.jpg`, featured: FEATURED.includes(w.id) }));
 const WORK = [
   ...FEATURED.map((id) => ALL_WORK.find((w) => w.id === id)),
   ...ALL_WORK.filter((w) => !w.featured),
@@ -123,7 +124,7 @@ const AR = {
   "cases.title": "هويات بصرية", "cases.sub": "تصميم الشعار وإزاي العلامة بتعيش على التغليف والمنتجات والأماكن.",
   "web.title": "المواقع", "web.sub": "مواقع ووردبريس وإليمنتور صممتها أو بنيتها أو طوّرتها — مع HTML وCSS وJavaScript لما البيلدر ما يكفيش.",
   "about.title": "عني وخبراتي",
-  "about.p1": "مصممة جرافيك بخبرة سنتين في التصميم الرقمي، الهوية البصرية، السوشيال ميديا، المطبوعات وتصميم المواقع.",
+  "about.p1": "مصممة جرافيك بخبرة سنتين في التصميم الرقمي، الهوية البصرية، السوشيال ميديا، فيديوهات الذكاء الاصطناعي وتصميم المواقع.",
   "about.p2": "حاليًا بدير الهوية البصرية لعلامتين في مجالين مختلفين — من محتوى السوشيال اليومي للمواد التسويقية والمواقع.",
   "about.tools": "الأدوات والمهارات",
   "sk.1": "هوية بصرية", "sk.2": "تصميم سوشيال ميديا", "sk.4": "تصميم مواقع متجاوبة", "sk.5": "مواد تسويقية",
@@ -143,10 +144,12 @@ const AR = {
   "contact.title": "يلا نشتغل سوا", "contact.sub": "عندك براند أو حملة أو موقع في دماغك؟ ابعتلي رسالة.",
   "contact.cv": "السي في (PDF) ↓",
   "footer.loc": "القاهرة، مصر", "footer.top": "لأعلى ↑",
-  "tag.social": "سوشيال ميديا", "tag.ads": "إعلان خارجي · Porta",
+  "tag.social": "سوشيال ميديا", "tag.egystone": "سوشيال ميديا · إيجي ستون", "tag.ads": "إعلان خارجي · بورتا",
+  "nav.videos": "الفيديوهات", "videos.title": "فيديوهات بالذكاء الاصطناعي", "videos.sub": "فيديوهات إعلانية لإيجي ستون، عملتها بأدوات الذكاء الاصطناعي — من الفكرة والمشاهد لحد المونتاج النهائي.",
+  "fb.note": "كل التصميمات والفيديوهات على صفحة إيجي ستون من شغلي.", "fb.btn": "شوف الصفحة على فيسبوك ↗", "sk.6": "فيديوهات بالذكاء الاصطناعي",
   "visit": "زيارة الموقع ↗",
 };
-const EN_TAGS = { "work.more": "Show all work", "work.less": "Show less", "tag.social": "Social Media", "tag.ads": "Outdoor ad · Porta", "visit": "Visit live site ↗" };
+const EN_TAGS = { "tag.egystone": "Social Media · Egy Stone", "work.more": "Show all work", "work.less": "Show less", "tag.social": "Social Media", "tag.ads": "Outdoor ad · Porta", "visit": "Visit live site ↗" };
 
 let lang = "en";
 const saved = (() => { try { return localStorage.getItem("lang"); } catch { return null; } })();
@@ -164,9 +167,40 @@ function applyLang() {
   });
   renderCases();
   renderSites();
+  renderVideos();
   if (typeof applyGridView === "function" && grid.children.length) applyGridView();
   document.querySelectorAll(".item .tag").forEach((el) => (el.textContent = t(el.dataset.k)));
   observeReveals();
+}
+
+/* ---------- AI videos ---------- */
+const VIDEOS = [
+  { n: 4, en: "A warranty that lasts a lifetime", ar: "ضمان يعيش معاك العمر كله", d: "2:11" },
+  { n: 6, en: "Why choose Compact over any other material?", ar: "ليه تختار الكومباكت عن أي خامة تانية؟", d: "1:02" },
+  { n: 5, en: "Compact HPL", ar: "كومباكت", d: "1:02" },
+  { n: 7, en: "Water-resistant", ar: "مقاوم للمياه", d: "0:50" },
+  { n: 3, en: "Some materials keep the stain, whatever you clean them with", ar: "في خامات… البقعة بتفضل فيها حتى لو استخدمتي منظفات كتير", d: "0:41" },
+  { n: 2, en: "Stylish… but will it last?", ar: "شيك.. بس تفتكروا بيستحمل؟", d: "0:29" },
+  { n: 1, en: "Time goes by", ar: "العمر بيعدي", d: "0:22" },
+];
+function renderVideos() {
+  const box = document.getElementById("videoGrid");
+  if (!box) return;
+  box.innerHTML = VIDEOS.map((v, i) => `
+    <article class="vcard reveal${i === 0 ? " big" : ""}">
+      <div class="vframe">
+        <video controls preload="none" playsinline poster="assets/videos/egystone-video-${v.n}.jpg">
+          <source src="assets/videos/egystone-video-${v.n}.mp4" type="video/mp4">
+        </video>
+        <span class="vtime">${v.d}</span>
+      </div>
+      <h3>${v[lang]}</h3>
+      <p class="vbrand">${lang === "ar" ? "إيجي ستون" : "Egy Stone"} · AI</p>
+    </article>`).join("");
+  /* only one video plays at a time */
+  box.querySelectorAll("video").forEach((vid) => vid.addEventListener("play", () => {
+    box.querySelectorAll("video").forEach((o) => { if (o !== vid) o.pause(); });
+  }));
 }
 
 /* ---------- Work grid ---------- */
@@ -181,7 +215,7 @@ function renderGrid() {
   grid.innerHTML = WORK.map((w, i) => `
     <figure class="item" data-cat="${w.cat}" data-featured="${w.featured ? 1 : ""}" data-i="${i}">
       <img src="${w.src}" alt="${w.cat === "ads" ? "Outdoor advertising design" : "Social media design"}" loading="lazy" width="900" height="880">
-      <span class="tag" data-k="tag.${w.cat}">${t("tag." + w.cat)}</span>
+      <span class="tag" data-k="tag.${w.tag}">${t("tag." + w.tag)}</span>
     </figure>`).join("");
   grid.querySelectorAll(".item").forEach((el) => el.addEventListener("click", () => {
     const visible = [...grid.querySelectorAll(".item:not(.hide)")];
